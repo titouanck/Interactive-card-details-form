@@ -1,0 +1,588 @@
+// Reset CSS
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+a {
+	text-decoration: none;
+}
+
+// Fonts and colors
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+$cl-gradient-beginning: hsl(249, 99%, 64%);
+$cl-gradient-end: hsl(278, 94%, 30%);
+$cl-primary: hsl(278, 68%, 11%);
+$cl-secondary: hsl(279, 6%, 55%);
+$cl-error: hsl(0, 100%, 66%);
+$cl-card-details: hsl(0, 0%, 100%);
+$cl-card-details-secondary: hsl(270, 3%, 87%);
+
+body {
+	font-family: "Space Grotesk", cursive, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+
+// Break-points
+$min-down: 409px;
+$min-up: 410px;
+$size-down: 589px;
+$size-up: 590px;
+$desktop-down: 1089px;
+$desktop-up: 1090px;
+$desktop-size-down: 1397px;
+$desktop-size-up: 1398px;
+
+// Card dimensions
+$card-width: 447px;
+$card-height: 245px;
+
+// CSS
+main {
+	margin: auto;
+	width: fit-content;
+	overflow: hidden;
+	
+	@media screen and (max-width: $desktop-down) {
+		width: 100%;
+	}
+
+	@media screen and (min-width: $desktop-up) {
+		display: grid;
+		grid-template-columns: (1fr 2fr);
+		column-gap: 15px;
+	}
+}
+
+// Card visuals
+.first-part {
+	position: relative;
+
+	@media screen and (max-width: $min-down) {
+		padding: 40px 0px;
+	}
+
+	@media screen and (min-width: $min-up) and (max-width: $desktop-down) {
+		padding: 40px 0px 70px 0px;
+	}
+
+	@media screen and (max-width: $desktop-down) {
+		background: url("../images/bg-main-mobile.png") no-repeat;
+		background-size: cover;
+	}
+
+	@media screen and (min-width: $desktop-up) {
+		background: url("../images/bg-main-desktop.png") no-repeat;
+		background-size: cover;
+		height: 100vh;
+		width: calc(1/3 * 100vw);
+	}
+}
+
+@media screen and (min-width: $desktop-up) {
+	.cards-container {
+			display: table;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		
+	.cards-child-container {
+			display: table-cell;
+			vertical-align: middle;
+	}
+
+	.cards {
+		@media screen and (min-width: $desktop-up) {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+	}
+}
+
+.card-front, .card-back {
+	color: $cl-card-details;
+
+	@media screen and (max-width: $size-down) {
+		width: 76%;
+	}
+
+	@media screen and (min-width: $size-up) {
+		width: fit-content;
+	}
+}
+
+.card-back {
+	position: relative;
+
+	margin-right: 4%;
+
+	&__cvc {
+		position: absolute;
+		letter-spacing: 1px;
+		
+		@media screen and (max-width: $size-down) {
+			font-size: 2.5vw;
+			top: 19vw;
+			left: 80%;
+		}
+
+		@media screen and (min-width: $size-up) and (max-width: $desktop-down) {
+			font-size: 14px;
+			top: 112px;
+			left: 360px;
+		}
+
+		@media screen and (min-width: $desktop-up) and (max-width: $desktop-size-down) {
+			font-size: 1vw;
+			top: 8vw;
+			left: 80.5%;
+		}
+
+		@media screen and (min-width: $desktop-size-up) {
+			font-size: 14px;
+			top: 112px;
+			left: 360px;
+		}
+	}
+	
+	@media screen and (max-width: $size-down) {
+		margin-left: auto;
+	}
+
+	@media screen and (min-width: $size-up) and (max-width: $desktop-down){
+		margin: auto;
+		transform: translateX(50px);
+	}
+
+	@media screen and (min-width: $desktop-up) {
+		transform: translateX(calc(1/2 * 1/3 * 100vw));
+	}
+}
+
+.card-front {
+
+	@media screen and (max-width: $desktop-down) {
+		position: absolute;
+	}
+
+	width: fit-content;
+	letter-spacing: 1.5px;
+	
+	@media screen and (max-width: $size-down) {
+		left: 4%;
+		top: calc(40px + 23.65vw);
+		padding-right: 20%;
+	}
+
+	@media screen and (min-width: $size-up) and (max-width: $desktop-down) {
+		left: 0;
+		right: 0;
+		margin: auto;
+		padding-right: 175px;
+		top: 179px;
+		transform: translateX(50px);
+	}
+
+	@media screen and (min-width: $desktop-up) {	
+		transform: translateX(calc(1/2 * 1/3 * 100vw - 90px));
+		margin-bottom: 32px;
+	}
+
+	&__child {
+		position: relative;
+	}
+
+	&__logo, &__numbers, &__name, &__expiration {
+		position: absolute;
+	}
+
+	&__logo, &__numbers, &__name {
+		left: 6.5%;
+	}
+
+	&__logo {
+		width: 19%;
+		top: 12%;
+		// top: 0;
+	}
+
+	&__numbers {
+		bottom: 30%;
+		max-width: 80%;
+		letter-spacing: 2.5px;
+		white-space: nowrap;
+	}
+
+	&__name, &__expiration {
+		color: $cl-card-details-secondary;
+		bottom: 15%;
+	}
+
+	&__expiration {
+		right: 6.5%;
+	}
+
+	// Gestion des tailles de police
+	@media screen and (max-width: $min-down) {
+		&__numbers {
+			font-size: 3.4vw;
+		}
+
+		&__name, &__expiration {
+			font-size: 2vw;
+		}
+	}
+
+	@media screen and (min-width: $min-up) and (max-width: $size-down) {
+		&__numbers {
+			font-size: 4.25vw;
+		}
+
+		&__name, &__expiration {
+			font-size: 2.4vw;
+		}
+	}
+
+	@media screen and (min-width: $size-up) and (max-width: $desktop-down) {
+		&__numbers {
+			font-size: 25px;
+		}
+
+		&__name, &__expiration {
+			font-size: 14px;
+		}
+	}
+
+	@media screen and (min-width: $desktop-up) and (max-width: $desktop-size-down) {
+		&__numbers {
+			font-size: 1.8vw;
+		}
+
+		&__name, &__expiration {
+			font-size: 1vw;
+		}
+	}
+
+	@media screen and (min-width: $desktop-size-up) {
+		&__numbers {
+			font-size: 25px;
+		}
+
+		&__name, &__expiration {
+			font-size: 14px;
+		}
+	}
+}
+
+// Center form in desktop view
+.second-part-container {
+	display: table;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.second-part-child-container {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+// User card details
+// .user-card {
+// 	background-color: green;
+// }
+
+.second-part {
+	@media screen and (max-width: $min-down) {
+		padding: calc(15vw + 30px) 0 0 0;
+	}
+
+	@media screen and (min-width: $min-up) and (max-width: $size-down) {
+		padding: 15vw 0 0 0;
+	}
+	
+	@media screen and (min-width: $size-up) and (max-width: $desktop-down) {
+		padding: 95px 0 0 0;
+	}
+
+}
+
+.form {
+	@media screen and (min-width: $desktop-up) {
+		width: 40%;
+		min-width: 382px;
+		margin: auto;
+		padding: 0;
+	}
+
+	label, input {
+		display: block;
+		margin: auto;
+		font-family: "Space Grotesk", cursive, Arial, Helvetica, sans-serif;
+		letter-spacing: 1px;
+	}
+	
+	label {
+		margin-bottom: 7.5px;
+		color: $cl-primary;
+
+		@media screen and (max-width: $min-down) {
+			font-size: 3.5vw;
+		}
+
+		@media screen and (min-width: $min-up) {
+			font-size: 14px;
+		}
+	}
+
+	input {
+		@media screen and (max-width: $desktop-down) {
+			margin-bottom: 17.5px;
+		}
+
+		@media screen and (min-width: $desktop-up) {
+			margin-bottom: 24px;
+		}
+
+		padding: 15px;
+		height: 45px;
+		border: 1px solid $cl-secondary;
+		border-radius: 7.5px;
+		
+		&::placeholder {
+			color: $cl-secondary;
+		}
+	}
+
+	&__name, &__number, &__name-label, &__number-label, &__submit {
+		width: 90%;
+	}
+
+	&__name, &__number, &__name-label, &__number-label, &__expiration input {
+		
+		// I was not able to set the gradient effect by myself, I found it on Github
+		// https://gist.github.com/stereokai/36dc0095b9d24ce93b045e2ddc60d7a0
+		&:focus {
+			outline: none;
+			border: double 1px transparent;
+			background-image: linear-gradient(white, white), radial-gradient(circle at top left, $cl-gradient-beginning, $cl-gradient-end);
+			background-origin: border-box;
+			background-clip: padding-box, border-box;
+		}
+	}
+
+	&__expiration {
+		display: grid;
+		margin: auto;
+		width: 90%;
+		grid-template-columns: repeat(4, 1fr);
+		grid-column-gap: 8px;
+
+		&__mm-label, &__mm, &__yy {
+			width: 100%;
+		}
+
+		&__cvc, &__cvc-label {
+			width: calc(100% - 2px);
+			transform: translateX(2px);
+		}
+
+		&__mm-label { grid-area: 1 / 1 / 2 / 3; }
+		&__cvc-label { grid-area: 1 / 3 / 2 / 5; }
+		&__mm { grid-area: 2 / 1 / 3 / 2; }
+		&__yy { grid-area: 2 / 2 / 3 / 3; }
+		&__cvc { grid-area: 2 / 3 / 3 / 5; }
+	}
+
+	&__submit {
+		background-color: $cl-primary;
+		color: $cl-card-details-secondary;
+		cursor: pointer;
+	}
+	#form__submit {
+		padding: 0;
+		margin-bottom: 5px;
+		letter-spacing: 0.75px;
+
+		@media screen and (max-width: $min-down) {
+			font-size: 5vw;
+			height: 12.5vw;
+		}
+
+		@media screen and (min-width: $min-up) {
+			font-size: 20px;
+			height: 50px;
+		}
+	}
+}
+
+// Error management
+.form {	
+	&__name-label, &__number-label,  &__expiration__mm-label, &__expiration__cvc-label {
+		position: relative;
+		
+		@media screen and (max-width: $desktop-down) {
+			&__error, &__error2 {
+				display: block;
+				position: absolute;
+				font-size: 0px;
+				color: transparent;
+			}
+		}
+
+		@media screen and (min-width: $desktop-up) {
+			&__error, &__error2 {
+				display: block;
+				visibility: hidden;
+				position: absolute;
+				font-size: 10px;
+				color: $cl-error;
+				letter-spacing: 0.5px;
+				left: 0;
+				top: 74px;
+			}
+		}
+	}
+}
+
+
+// Thank you page
+.second-part-container {
+	position: relative;
+}
+
+.thank-you {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	// right: -9999px;
+	margin: 0 5%;
+	text-align: center;
+
+	&__img {
+		max-width: 20%;
+	}
+
+	&__title {
+		font-size: 28px;
+		white-space: nowrap;
+
+		@media screen and (max-width: $min-down) {
+			font-size: 7vw;
+		}
+
+		@media screen and (min-width: $min-up) {
+			font-size: 28px;
+		}
+	}
+
+	&__details {
+		display: block;
+		color: $cl-secondary;
+
+		@media screen and (max-width: $min-down) {
+			font-size: 4.5vw;
+		}
+
+		@media screen and (min-width: $min-up) {
+			font-size: 18px;
+		}
+	}
+
+	&__form {
+		display: inline;
+	}
+
+	&__button {
+		display: block;
+		font-family: "Space Grotesk", cursive, Arial, Helvetica, sans-serif;
+		letter-spacing: 0.75px;
+		background-color: $cl-primary;
+		color: $cl-card-details-secondary;
+		font-size: 20px;
+		cursor: pointer;
+		border: 1px solid $cl-secondary;
+		border-radius: 9px;
+		width: 100%;
+
+		@media screen and (max-width: $min-down) {
+			font-size: 5vw;
+			height: 12.5vw;
+		}
+
+		@media screen and (min-width: $min-up) {
+			font-size: 20px;
+			height: 50px;
+		}
+	}
+
+	// Align positions of the elements with the elements on the first state
+	@media screen and (max-width: $size-down) {
+		&__title {
+			margin: 50px 0px 10px 0px;
+		}
+		
+		&__button {
+			position: absolute;
+			bottom: 5px;
+		}
+	}
+	
+	@media screen and (min-width: $size-up) and (max-width: $desktop-down) {
+		&__title {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 52%;
+		}
+		
+		&__details {
+			position: absolute;
+			top: 63%;
+			left: 0;
+			right: 0;
+		}
+		
+		&__button {
+			position: absolute;
+			bottom: 5px;
+		}
+	}
+	
+	@media screen and (min-width: $desktop-up) {
+		margin: auto;
+		
+		&__img {
+			margin-top: 230px;
+		}
+
+		&__title {
+			margin-top: 49px;
+		}
+
+		&__button {
+			margin: auto;
+			margin-top: 80px;
+			width: 36%;
+			min-width: 345px;
+		}
+	}
+}
+
+// Transitions
+.user-card {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.15s;
+}
+
+.thank-you {
+	&__img, &__title, &__details {
+		opacity: 0;
+		transition: opacity 0.15s;
+	}
+	visibility: hidden;
+}

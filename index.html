@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="CSS/styles.css">
+		<script src="script.js"></script>
+		<title>Interactive card details form</title>
+	</head>
+	<body>
+		<main>
+			<div class="first-part">
+				<div class="cards-container">
+					<div class="cards-child-container">
+						<div class="cards">
+							<div class="card-back">
+								<img class="card-back__img" src="images/bg-card-back.png" alt="card back">
+								<span class="card-back__cvc">000</span>
+							</div>
+							<div class="card-front">
+								<div class="card-front__child">
+									<img class="card-front__img" src="images/bg-card-front.png" alt="card front">
+									<img class="card-front__logo" src="images/card-logo.svg" alt="card logo">
+									<span class="card-front__numbers">0000 0000 0000 0000</span>
+									<span class="card-front__name">JANE APPLESEED</span>
+									<span class="card-front__expiration"><span class="card-front__expiration-mm">00</span>/<span class="card-front__expiration-yy">00</span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="second-part-container">
+				<div class="second-part-child-container">
+					<div class="second-part">
+						<div class="second-part__element user-card">
+							<form class="user-card__form form" action="index.html" method="post" onsubmit="return chkForm()">
+								<label class="form__name-label" for="form__name">CARDHOLDER NAME
+									<span class="form__name-label__error">Can't be blank.</span>
+								</label>
+								<input class="form__name" type="text" id="form__name" placeholder="e.g. Jane Appleseed" maxlength="21">
+								
+								<label class="form__number-label" for="form__number">CARD NUMBER
+									<span class="form__number-label__error">Can't be blank.</span>
+								</label>
+								<input class="form__number" type="text" id="form__number" placeholder="e.g. 1234 5678 9123 0000" maxlength="19">
+								
+								<div class="form__expiration">
+									<label class="form__expiration__mm-label" for="form__expiration__mm">EXP. DATE (MM/YY)
+										<span class="form__expiration__mm-label__error">Can't be blank.</span>
+										<span class="form__expiration__mm-label__error2">Can't be blank.</span>
+									</label>
+									<label class="form__expiration__cvc-label" for="form__expiration__cvc">CVC
+										<span class="form__expiration__cvc-label__error">Can't be blank.</span>
+									</label>
+									
+									<input class="form__expiration__mm" id="form__expiration__mm" type="text" placeholder="MM" maxlength="2">
+									<input class="form__expiration__yy" id="form__expiration__yy" type="text" placeholder="YY" maxlength="2">
+									<input class="form__expiration__cvc" id="form__expiration__cvc" type="text" placeholder="e.g. 123" maxlength="3">
+								</div>
+								
+								<input class="form__submit" id="form__submit" type="submit" value="Confirm">
+							</form>
+						</div>
+					</div>
+					<div class="second-part thank-you">
+						<img class="thank-you__img" src="images/icon-complete.svg" alt="" aria-hidden="true">
+						<h1 class="thank-you__title">THANK YOU !</h1>
+						<span class="thank-you__details">We've added your card details</span>
+						<form class="thank-you__form" action="index.html">
+							<input class="thank-you__button" type="submit" value="Continue" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
